@@ -1,6 +1,6 @@
 package ru.netology.service;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Assertions;
 
 public class CashbackHackServiceTest {
 
@@ -10,7 +10,7 @@ public class CashbackHackServiceTest {
         int amount = 1000;
         int actual = service.remain(amount);
         int expected = 0;
-        assertEquals(expected, actual);
+        org.junit.Assert.assertEquals(expected, actual);
     }
 
     @org.junit.Test
@@ -19,7 +19,7 @@ public class CashbackHackServiceTest {
         int amount = 0;
         int actual = service.remain(amount);
         int expected = 1000;
-        assertEquals(expected, actual);
+        org.junit.Assert.assertEquals(expected, actual);
     }
 
     @org.junit.Test
@@ -28,7 +28,7 @@ public class CashbackHackServiceTest {
         int amount = 999;
         int actual = service.remain(amount);
         int expected = 1;
-        assertEquals(expected, actual);
+        org.junit.Assert.assertEquals(expected, actual);
     }
 
     @org.junit.Test
@@ -37,6 +37,43 @@ public class CashbackHackServiceTest {
         int amount = 1001;
         int actual = service.remain(amount);
         int expected = 999;
-        assertEquals(expected, actual);
+        org.junit.Assert.assertEquals(expected, actual);
+    }
+
+    //Тесты с использованием API JUnit Jupiter
+    @org.junit.jupiter.api.Test
+    public void testRomainJupiter() {
+        CashbackHackService service = new CashbackHackService();
+        int amount = 1000;
+        int actual = service.remain(amount);
+        int expected = 0;
+        org.junit.jupiter.api.Assertions.assertEquals(expected, actual);
+    }
+
+    @org.junit.jupiter.api.Test
+    public void testRomainZeroJupiter() {
+        CashbackHackService service = new CashbackHackService();
+        int amount = 0;
+        int actual = service.remain(amount);
+        int expected = 1000;
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @org.junit.jupiter.api.Test
+    public void testRomainBorderUnderJupiter() {
+        CashbackHackService service = new CashbackHackService();
+        int amount = 999;
+        int actual = service.remain(amount);
+        int expected = 1;
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @org.junit.jupiter.api.Test
+    public void testRomainBorderAboveJupiter() {
+        CashbackHackService service = new CashbackHackService();
+        int amount = 1001;
+        int actual = service.remain(amount);
+        int expected = 999;
+        Assertions.assertEquals(expected, actual);
     }
 }
